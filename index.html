@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar CNPJ</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Verificar CNPJ</h1>
+        <p>Desenvolvido por WendellD3v</p>
+
+        <form>
+            <input type="text" name="CNPJ" id="cnpjDigitado" placeholder="Digite aqui o CNPJ">
+        </form>
+
+        <button onclick="pegarCNPJ()">Buscar CNPJ</button>
+    </header>
+    <p id="error"></p>
+    <div id="resultado">
+    </div>
+</body>
+</html>
