@@ -26,8 +26,9 @@ function formatCNPJ(cnpj) {
 }
 
 async function pegarCNPJ() {
-    const cnpj = await document.querySelector('#cnpjDigitado').value
+    let cnpj = await document.querySelector('#cnpjDigitado').value
     if (cnpj) {
+        cnpj = cnpj.replace(/\D/g, '');
         document.querySelector('#error').innerHTML = ''
         document.querySelector('#resultado').innerHTML = `
         <div class="loading">
@@ -54,9 +55,9 @@ async function pegarCNPJ() {
                         <button id='copiarNOME' onClick='copiarNOME()'><img src='imgs/copy.svg' width = 30> Copiar</button>
                     </div>`
                 } else {
-                    console.log('CNPJ Não Encontrado')
+                    console.log(result.detalhes)
                     document.querySelector('#resultado').innerHTML = ""
-                    document.querySelector('#error').innerHTML = 'CNPJ Não Encontrado'
+                    document.querySelector('#error').innerHTML = `${result.detalhes}`
                 }
         } catch (err) {
             console.log('Aguarde 1 Minuto Para Verificar Novamente')
