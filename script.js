@@ -12,6 +12,18 @@ function copiarNOME () {
     })
 }
 
+async function formatarInput() {
+    cnpj = await document.querySelector('#cnpjDigitado').value
+
+    cnpj.replace(/\D/g, '');
+
+    if (cnpj.length <= 14) {
+        cnpj = cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+        console.log('Função Acionada')
+        document.querySelector('#cnpjDigitado').value = cnpj
+    }
+}
+
 function formatCNPJ(cnpj) {
     // Remove todos os caracteres não numéricos
     cnpj = cnpj.replace(/\D/g, '');
