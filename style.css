@@ -6,7 +6,11 @@
 }
 
 body {
-    background-color: #111620;
+    /* background-color: #111620; */
+    background-image: url('./imgs/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 /* Digitar CNPJ */
@@ -19,7 +23,7 @@ header {
 }
 
 header h1 {
-    color: #BABABA;
+    color: #e2e2e2;
     font-family: "Poppins", sans-serif;
     font-weight: 900;
     font-style: normal;
@@ -27,14 +31,14 @@ header h1 {
 }
 
 header p {
-    color: #BABABA;
+    color: #ebebeb;
     font-family: "Poppins", sans-serif;
     font-weight: 100;
     font-style: italic;
 }
 
 header input[type='text'] {
-    color: #BABABA;
+    color: #ffffff;
     margin: 25px;
     background-color: transparent;
     border: 1px;
@@ -46,6 +50,9 @@ header input[type='text'] {
     text-align: center;
 }
 
+header input[type='text']::placeholder {
+    color: #bdbdbd;
+}
 
 header button {
     color: #BABABA;
@@ -88,9 +95,9 @@ header button:hover{
     color: rgb(100, 145, 255);
 }
 
-/* Copiar CNPJ */
+/* Copiar Button */
 
-#copiarCNPJ {
+#copiar {
     color: #FFFFFF;
     display: flex;
     align-items: center;
@@ -102,26 +109,7 @@ header button:hover{
     border-radius: 10px;
 }
 
-#copiarCNPJ:hover {
-    background-color: rgb(47, 80, 161);
-    cursor: pointer;
-}
-
-/* Copiar Nome */
-
-#copiarNOME {
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    width: 100px;
-    background-color: rgb(100, 145, 255);
-    margin-top: 10px;
-    padding: 10px;
-    border-style: none;
-    border-radius: 10px;
-}
-
-#copiarNOME:hover {
+#copiar:hover {
     background-color: rgb(47, 80, 161);
     cursor: pointer;
 }

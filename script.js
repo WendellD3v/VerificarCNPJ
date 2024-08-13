@@ -12,6 +12,20 @@ function copiarNOME () {
     })
 }
 
+function copiarNOMEF () {
+    const nomeF = document.querySelector('#NomeF').innerHTML
+    navigator.clipboard.writeText(nomeF).then(function () {
+        alert('Nome Fantasia Da Empresa Copiado Com Sucesso')
+    })
+}
+
+function copiarCNAE () {
+    const cnae = document.querySelector('#CNAE').innerHTML
+    navigator.clipboard.writeText(cnae).then(function() {
+        alert('C-NAE Copiado Com Sucesso')
+    })
+}
+
 async function formatarInput() {
     cnpj = await document.querySelector('#cnpjDigitado').value
 
@@ -55,23 +69,53 @@ async function pegarCNPJ() {
 
                     
 
-                    document.querySelector('#resultado').innerHTML = `
-                    <div id="result">
-                        <p>CNPJ:</p>
-                        <span id='CNPJ'>${formatCNPJ(result.estabelecimento.cnpj)}</span>
-                        <button id='copiarCNPJ' onClick='copiarCNPJS()'><img src='imgs/copy.svg' width = 30> Copiar</button>
-                        <br>
-                        <br>
-                        <p>Nome Da Empresa</p>
-                        <span id='NOME'>${result.razao_social}</span>
-                        <button id='copiarNOME' onClick='copiarNOME()'><img src='imgs/copy.svg' width = 30> Copiar</button>
-                    </div>`
+                    if (result.estabelecimento.nome_fantasia == null) {
+                        document.querySelector('#resultado').innerHTML = `
+                        <div id="result">
+                            <p>CNPJ:</p>
+                            <span id='CNPJ'>${formatCNPJ(result.estabelecimento.cnpj)}</span>
+                            <button id='copiar' onClick='copiarCNPJS()'><img src='imgs/copy.svg' width = 30> Copiar</button>
+                            <br>
+                            <br>
+                            <p>Nome Da Empresa</p>
+                            <span id='NOME'>${result.razao_social}</span>
+                            <button id='copiar' onClick='copiarNOME()'><img src='imgs/copy.svg' width = 30> Copiar</button>
+                            <br>
+                            <br>
+                            <p>C-NAE</p>
+                            <span id='CNAE'>${result.estabelecimento.atividade_principal.classe} - ${result.estabelecimento.atividade_principal.descricao}</span>
+                            <button id='copiar' onClick='copiarCNAE()'><img src='imgs/copy.svg' width = 30> Copiar</button>
+                        </div>`
+                    } else {
+                        document.querySelector('#resultado').innerHTML = `
+                        <div id="result">
+                            <p>CNPJ:</p>
+                            <span id='CNPJ'>${formatCNPJ(result.estabelecimento.cnpj)}</span>
+                            <button id='copiar' onClick='copiarCNPJS()'><img src='imgs/copy.svg' width = 30> Copiar</button>
+                            <br>
+                            <br>
+                            <p>Nome Da Empresa</p>
+                            <span id='NOME'>${result.razao_social}</span>
+                            <button id='copiar' onClick='copiarNOME()'><img src='imgs/copy.svg' width = 30> Copiar</button>
+                            <br>
+                            <br>
+                            <p>Nome Fantasia</p>
+                            <span id='NomeF'>${result.estabelecimento.nome_fantasia}</span>
+                            <button id='copiar' onClick='copiarNOMEF()'><img src='imgs/copy.svg' width = 30> Copiar</button>
+                            <br>
+                            <br>
+                            <p>C-NAE</p>
+                            <span id='CNAE'>${result.estabelecimento.atividade_principal.classe} - ${result.estabelecimento.atividade_principal.descricao}</span>
+                            <button id='copiar' onClick='copiarCNAE()'><img src='imgs/copy.svg' width = 30> Copiar</button>
+                        </div>`
+                    }
                 } else {
                     console.log(result.detalhes)
                     document.querySelector('#resultado').innerHTML = ""
                     document.querySelector('#error').innerHTML = `${result.detalhes}`
                 }
         } catch (err) {
+            console.log(err)
             console.log('Aguarde 1 Minuto Para Verificar Novamente')
             document.querySelector('#resultado').innerHTML = ""
             document.querySelector('#error').innerHTML = 'API Em Pausa, Aguarde 1 Minuto Para Verificar Novamente'
