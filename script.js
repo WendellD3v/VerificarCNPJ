@@ -52,10 +52,6 @@ function formatCNPJ(cnpj) {
 }
 
 async function pegarCNPJ() {
-    if (window.event.keyCode == 13){   
-        event.returnValue=false;
-        event.cancel = true;
-    }
 
     let cnpj = await document.querySelector('#cnpjDigitado').value
     if (cnpj) {
