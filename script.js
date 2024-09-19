@@ -53,6 +53,9 @@ function formatCNPJ(cnpj) {
 
 async function pegarCNPJ() {
 
+    event.returnValue=false;
+    event.cancel = true
+
     let cnpj = await document.querySelector('#cnpjDigitado').value
     if (cnpj) {
         cnpj = cnpj.replace(/\D/g, '');
