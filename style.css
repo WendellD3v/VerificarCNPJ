@@ -6,8 +6,8 @@
 }
 
 body {
-    /* background-color: #111620; */
-    background-image: url('./imgs/background.jpg');
+    background-color: #111620;
+    /* background-image: url('./imgs/background.jpg'); */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -141,7 +141,60 @@ header button:hover{
     padding-top: 20px;
 }
 
+#infobox{
+    position: fixed;
+    right: -600px;
+    background-color: #444547;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+#infobox.show {
+    animation: aparecer 1s ease forwards;
+}
+
+#infobox.close {
+    animation: sumir 1s ease forwards;
+}
+
+#infobox h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #FFFFFF;
+}
+
+#infobox p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #FFFFFF;
+}
+
+@keyframes aparecer {
+    0%{
+        right: -600px;
+    }
+
+    50% {
+        right: 80px;
+    }
+
+    100%{
+        right: 50px;
+    }
+}
+
+@keyframes sumir {
+    0%{
+        right: 50px;
+    }
+
+    50% {
+        right: 80px;
+    }
+
+    100%{
+        right: -600px;
+    }
+}
 /* Verificar CNPJ */
 
 /*font-family: 'Poppins';

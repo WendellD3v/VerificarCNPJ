@@ -1,28 +1,28 @@
 function copiarCNPJS () {
     const cnpj = document.querySelector("#CNPJ").innerHTML
     navigator.clipboard.writeText(cnpj).then(function () {
-        alert('CNPJ Copiado Com Sucesso')
+        info('Sucesso', 'CNPJ Copiado Com Sucesso')
     })
 }
 
 function copiarNOME () {
     const nome = document.querySelector('#NOME').innerHTML
     navigator.clipboard.writeText(nome).then(function () {
-        alert('Nome Da Empresa Copiado Com Sucesso')
+        info('Sucesso', 'Nome Da Empresa Copiado Com Sucesso')
     })
 }
 
 function copiarNOMEF () {
     const nomeF = document.querySelector('#NomeF').innerHTML
     navigator.clipboard.writeText(nomeF).then(function () {
-        alert('Nome Fantasia Da Empresa Copiado Com Sucesso')
+        info('Sucesso', 'Nome Fantasia Da Empresa Copiado Com Sucesso')
     })
 }
 
 function copiarCNAE () {
     const cnae = document.querySelector('#CNAE').innerHTML
     navigator.clipboard.writeText(cnae).then(function() {
-        alert('C-NAE Copiado Com Sucesso')
+        info('Sucesso', 'C-NAE Copiado Com Sucesso')
     })
 }
 
@@ -52,6 +52,11 @@ function formatCNPJ(cnpj) {
 }
 
 async function pegarCNPJ() {
+    if (window.event.keyCode == 13){   
+        event.returnValue=false;
+        event.cancel = true;
+    }
+
     let cnpj = await document.querySelector('#cnpjDigitado').value
     if (cnpj) {
         cnpj = cnpj.replace(/\D/g, '');
@@ -121,4 +126,21 @@ async function pegarCNPJ() {
             document.querySelector('#error').innerHTML = 'API Em Pausa, Aguarde 1 Minuto Para Verificar Novamente'
         }
     }
+}
+
+function info(type, msg){
+    let infobox = document.querySelector('#infobox');
+    infobox.innerHTML = `
+            <h2>${type}</h2>
+            <p>${msg}</p>
+        `;
+
+    infobox.classList.add('show');
+    setTimeout(() => {
+        infobox.classList.remove('show');
+        infobox.classList.add('close');
+        setTimeout(() => {
+            infobox.classList.remove('close');
+        }, 1000);
+    }, 2000);
 }
