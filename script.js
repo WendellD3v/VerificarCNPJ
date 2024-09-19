@@ -7,21 +7,21 @@ function copiarCNPJS () {
 
 function copiarNOME () {
     const nome = document.querySelector('#NOME').innerHTML
-    navigator.clipboard.writeText(nome).then(function () {
+    navigator.clipboard.writeText(nome.replace('&amp;', '&')).then(function () {
         info('Sucesso', 'Nome Da Empresa Copiado Com Sucesso')
     })
 }
 
 function copiarNOMEF () {
     const nomeF = document.querySelector('#NomeF').innerHTML
-    navigator.clipboard.writeText(nomeF).then(function () {
+    navigator.clipboard.writeText(nomeF.replace('&amp;', '&')).then(function () {
         info('Sucesso', 'Nome Fantasia Da Empresa Copiado Com Sucesso')
     })
 }
 
 function copiarCNAE () {
     const cnae = document.querySelector('#CNAE').innerHTML
-    navigator.clipboard.writeText(cnae).then(function() {
+    navigator.clipboard.writeText(cnae.replace('&amp;', '&')).then(function() {
         info('Sucesso', 'C-NAE Copiado Com Sucesso')
     })
 }
